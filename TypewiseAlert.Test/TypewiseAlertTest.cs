@@ -10,6 +10,15 @@ namespace TypewiseAlert.Test
     {
       Assert.True(TypewiseAlert.inferBreach(12, 20, 30) ==
         TypewiseAlert.BreachType.TOO_LOW);
+
     }
-  }
+
+        [Fact]
+        public void InfersBreachAsPerLimits1()
+        {
+            Assert.True(TypewiseAlert.inferBreach(12, 20, 30) ==
+              TypewiseAlert.BreachType.TOO_LOW);
+
+        }
+    }
 }
