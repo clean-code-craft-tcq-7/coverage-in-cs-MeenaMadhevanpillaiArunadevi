@@ -31,47 +31,29 @@ namespace Test
         {
 
             //above threshold
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                    (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 1) == BreachType.TOO_HIGH);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-              (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 120) == BreachType.TOO_HIGH);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-             (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 10.7) == BreachType.TOO_HIGH);
-            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,
-                   (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
-            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,
-                   (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
-            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,
-                 (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 1) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 120) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString()) + 10.7) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
+            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.TOO_HIGH);
 
             //below threshold
-            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,
-                    -1) == BreachType.TOO_LOW);
-            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,
-                    -50) == BreachType.TOO_LOW);
-            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,
-                    -1) == BreachType.TOO_LOW);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                   -1) == BreachType.TOO_LOW);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                  -10.2) == BreachType.TOO_LOW);
+            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,-1) == BreachType.TOO_LOW);
+            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,-50) == BreachType.TOO_LOW);
+            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,-1) == BreachType.TOO_LOW);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,-1) == BreachType.TOO_LOW);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,-10.2) == BreachType.TOO_LOW);
 
             //threshold
-            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING,
-                   (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
-            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,
-                    (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                   (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.PASSIVE_COOLING, (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.HI_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
 
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                   (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
-            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,
-                 (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
-            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,
-                (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
-            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,
-                2) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.MED_ACTIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.HI_ACTIVE_COOLING, (int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
+            Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,2) == BreachType.NORMAL);
 
 
         }

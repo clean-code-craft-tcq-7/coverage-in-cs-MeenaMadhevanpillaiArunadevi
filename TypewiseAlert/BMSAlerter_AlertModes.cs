@@ -6,39 +6,26 @@ namespace TypewiseAlert
 {
     public partial class TypewiseAlert
     {
-        public static int sendToController(BreachType breachType)
+        public static void sendToController(BreachType breachType) 
         {
-            try
-            {
+          
                 const ushort header = 0xfeed;
                 Console.WriteLine(string.Format("{0} : {1}", header, breachType));
-                return 1;
-            }
-            catch(Exception ex)
-            {
-                return 0;
-            }
-            
+             
         }
-        public static int sendToEmail(BreachType breachType)
-        {
-            try
-            {
+        public static void sendToEmail(BreachType breachType)
+        {          
                 string recepient = "a.b@c.com";
+
+                int isEmailAlert_Sent = 0;
                 if (breachType != BreachType.NORMAL)
                 {
                     Console.WriteLine(string.Format("To: {0}", recepient));
                     Console.WriteLine(JsonConvert.SerializeObject(breachType, new StringEnumConverter()));
-                    return 1; //mail sent
+                    isEmailAlert_Sent += 1; //mail sent
                 }
-                return 2;//mail not sent as normal
-            }
-            catch(Exception ex)
-            {
-                return 0; //failure in mail
-            }
-            
-            
+                //mail not sent as normal
+           
         }
     }
 }

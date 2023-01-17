@@ -6,21 +6,34 @@ namespace TypewiseAlert
 {
   public partial class TypewiseAlert
   {
-            
-        public static int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
-            int isAlertSuccess = 0;
-            BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
+
+        public static int EmailAlert_Sent = 0;
+        public static int ControllerAlert_Sent = 0;
+        public static void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, IBreachControllerAlerter _controllerAlerter = null, IBreachEmailAlerter _emailAlerter = null) 
+        {
+            EmailAlert_Sent = 0;
+            ControllerAlert_Sent = 0;
+            BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC); //non io mtd
 
             switch(alertTarget) {
-                case AlertTarget.TO_CONTROLLER:
-                    isAlertSuccess = sendToController(breachType);
+                case AlertTarget.TO_CONTROLLER: //mock the alerttarget
+                    _controllerAlerter.sendToController(breachType);
+                    ControllerAlert_Sent += 1;
+                    //sendToController(breachType);
                   break;
                 case AlertTarget.TO_EMAIL:
-                    isAlertSuccess = sendToEmail(breachType);
-                  break;
+                     _emailAlerter.sendEmail(breachType);
+                    EmailAlert_Sent += 1;
+                    break;
             }
-            return isAlertSuccess;
          }
        
   }
+    public class A
+    {
+        public static void AA()
+        {
+
+        }
+    }
 }
