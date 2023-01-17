@@ -55,7 +55,6 @@ namespace Test
             Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,(int)Enum.Parse(typeof(temperatureBreach_UpperLimits), CoolingType.PASSIVE_COOLING.ToString())) == BreachType.NORMAL);
             Assert.True(classifyTemperatureBreach(CoolingType.MED_ACTIVE_COOLING,2) == BreachType.NORMAL);
 
-
         }
 
         [Fact]
