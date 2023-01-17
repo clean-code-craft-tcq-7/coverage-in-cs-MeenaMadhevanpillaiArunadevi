@@ -29,11 +29,5 @@ namespace TypewiseAlert
          }
        
   }
-    public class A
-    {
-        public static void AA()
-        {
-
-        }
-    }
+   
 }
