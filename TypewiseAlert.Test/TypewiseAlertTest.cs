@@ -87,6 +87,28 @@ namespace TypewiseAlert.Test
 
             //Assert
             Assert.True(EmailAlert_Sent == 1);
+
+
+        }
+
+        [Fact]
+        public void Test_SendMail()
+        {
+
+
+            //SendToEmail
+            EmailAlerter email = new EmailAlerter();
+            email.sendEmail(BreachType.TOO_HIGH);
+            sendToEmail(BreachType.TOO_HIGH);
+
+            //Arrange
+            email = new EmailAlerter();
+
+            //Act
+            bool expected = email.IsProcesstriggered();
+
+            //Assert
+            Assert.True(!expected);
         }
 
         //[Fact]

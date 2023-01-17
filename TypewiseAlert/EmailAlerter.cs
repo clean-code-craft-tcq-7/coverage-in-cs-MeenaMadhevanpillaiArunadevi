@@ -9,10 +9,16 @@ namespace TypewiseAlert
 
         public class EmailAlerter : IBreachEmailAlerter
         {
+            private bool IsEmailTriggered = false;
             public void sendEmail(BreachType breachType)
             {
                 sendToEmail(breachType);
             }
+            public bool IsProcesstriggered()
+            {
+                return IsEmailTriggered;
+            }
+
         }
     }
 }
