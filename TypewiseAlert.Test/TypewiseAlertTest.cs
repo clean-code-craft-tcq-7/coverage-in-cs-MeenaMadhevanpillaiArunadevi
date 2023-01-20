@@ -14,37 +14,13 @@ namespace TypewiseAlert.Test
         {
             batteryCharacter.coolingType = CoolingType.HI_ACTIVE_COOLING;
 
-            //#1
-            //create both instances
-            MockControllerAlerter mockControllerAlerter = new MockControllerAlerter();
-            ControllerAlerter controllerAlerter = new ControllerAlerter(mockControllerAlerter);
-
-            //Act - call notifySendToController with necessary params 
-            controllerAlerter.notifySendToController(BreachType.TOO_LOW);
-
-            //Assert - use mockControllerAlerter to check that notifySendToController sent msg
-            Assert.True(mockControllerAlerter.isControllerAlert_Sent == 1);
-
-            //#2
-            //Act - call notifySendToController with necessary params 
-            mockControllerAlerter = new MockControllerAlerter();
-            controllerAlerter = new ControllerAlerter(mockControllerAlerter);
-            controllerAlerter.notifySendToController(BreachType.TOO_HIGH);
-
-            //Assert - use mockControllerAlerter to check that notifySendToController sent msg
-            Assert.True(mockControllerAlerter.isControllerAlert_Sent == 1);
-
-
-
-            
+              //Arrange
             var moq = new Mock<IBreachControllerAlerter>();
-            // move common expectations to a fixture setup method and even override those expectations when needed in a specific unit test
-            moq.Setup(alert => alert.sendToController(BreachType.TOO_LOW)).Verifiable();
-            IBreachControllerAlerter breachControllerAlerter = moq.Object;
-
-            batteryCharacter.coolingType = CoolingType.HI_ACTIVE_COOLING;
-            
-            checkAndAlert(AlertTarget.TO_CONTROLLER, batteryCharacter, -5, breachControllerAlerter, null);
+            moq.Setup(mk => mk.sendToController(It.IsAny<BreachType>())).Verifiable();
+            //Act
+            checkAndAlert(AlertTarget.TO_CONTROLLER, batteryCharacter, -5, moq.Object, null);
+            //Assert
+            Assert.True(1 == ControllerAlert_Sent);
 
         }
 
