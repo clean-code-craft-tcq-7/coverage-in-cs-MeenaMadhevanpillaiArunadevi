@@ -6,13 +6,7 @@ namespace TypewiseAlert
 {
     public partial class TypewiseAlert
     {
-        public static void sendToController(BreachType breachType) 
-        {
-          
-                const ushort header = 0xfeed;
-                Console.WriteLine(string.Format("{0} : {1}", header, breachType));
-             
-        }
+       
         public static void sendToEmail(BreachType breachType)
         {          
                 string recepient = "a.b@c.com";
