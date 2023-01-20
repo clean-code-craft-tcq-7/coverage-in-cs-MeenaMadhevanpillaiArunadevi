@@ -7,29 +7,16 @@ namespace TypewiseAlert
     public partial class TypewiseAlert
     {
 
-        public class ControllerAlerter
+        public class ControllerAlerter: IBreachControllerAlerter
         {
-            private IBreachControllerAlerter _breachControllerAlerter;
-            public ControllerAlerter(IBreachControllerAlerter breachControllerAlerter)
-            {
-                _breachControllerAlerter = breachControllerAlerter;
-            }
-            public void notifySendToController(BreachType breachType)
+             public void sendToController(BreachType breachType)
             {
 
-                _breachControllerAlerter.sendToController(breachType);
+                const ushort header = 0xfeed;
+                Console.WriteLine(string.Format("{0} : {1}", header, breachType));
             }
         }
-        //Mocking Controller Alert - creating a dummy object that represents a real object we want to test
-        public class MockControllerAlerter : IBreachControllerAlerter
-        {
-            public int isControllerAlert_Sent = 0;
-            public void sendToController(BreachType breachType)
-            {
-                isControllerAlert_Sent += 1;
-
-            }
-        }
+       
 
     }
 }
